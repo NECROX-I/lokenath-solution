@@ -1,0 +1,13 @@
+{
+  "name": "loknath-solution",
+  "version": "1.0.0",
+  "description": "Lokennath Printing & Stationery — Full Stack Web Application",
+  "scripts": {
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "seed": "cd backend && npm run seed",
+    "build:frontend": "cd frontend && npm run build"
+  },
+  "keywords": ["stationery", "toys", "digital-services", "fullstack", "react", "express", "mongodb"]
+}
