@@ -1,6 +1,6 @@
 import { useLocation, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO'
 import { MdCheckCircle, MdShoppingBag, MdPhone, MdTrackChanges } from 'react-icons/md'
 import { FaWhatsapp } from 'react-icons/fa'
 
@@ -14,7 +14,7 @@ export default function OrderSuccess() {
 
   return (
     <>
-      <Helmet><title>Order Placed – Loknath Solution</title></Helmet>
+      <SEO title="Order Placed" description="Thank you for your order." noIndex={true} />
       <div className="page-container py-16 flex items-center justify-center min-h-[75vh]">
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 20 }}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO'
 import { motion } from 'framer-motion'
 import { serviceAPI, serviceRequestAPI } from '../services/api'
 import toast from 'react-hot-toast'
@@ -66,10 +66,29 @@ export default function ServiceDetail() {
 
   return (
     <>
-      <Helmet>
-        <title>{service.title} – Lokennath Printing & Stationery</title>
-        <meta name="description" content={service.shortDesc} />
-      </Helmet>
+      <SEO
+        title={service.title}
+        description={`${service.description?.slice(0, 155)}... — ${service.charges || ''} at Loknath Solution, West Bengal.`}
+        keywords={`${service.title} West Bengal, ${service.title.toLowerCase()} near me, ${service.id.replace(/-/g,' ')} help`}
+        canonical={`/services/${service.id}`}
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": service.title,
+          "description": service.description,
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Loknath Solution",
+            "telephone": "+919876543210"
+          },
+          "areaServed": "West Bengal, India",
+          "offers": service.charges ? {
+            "@type": "Offer",
+            "description": service.charges,
+            "priceCurrency": "INR"
+          } : undefined
+        }}
+      />
 
       <div className="page-container py-8">
         <Link to="/services" className="btn-ghost mb-6 inline-flex">

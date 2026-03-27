@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import SEO from '../../components/SEO'
 import { Link } from 'react-router-dom'
 import { adminAPI } from '../../services/api'
 import { StatSkeleton } from '../../components/Skeletons'
@@ -59,6 +60,8 @@ export default function AdminDashboard() {
   }
 
   return (
+    <>
+      <SEO title="Admin" description="." noIndex={true} />
     <div>
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-display font-bold text-slate-900 dark:text-white">Dashboard</h1>
@@ -232,5 +235,6 @@ export default function AdminDashboard() {
         </div>
       )}
     </div>
+    </>
   )
 }

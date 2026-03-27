@@ -2,17 +2,17 @@ import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCartStore } from '../store'
 import { MdDeleteOutline, MdShoppingBag, MdArrowForward } from 'react-icons/md'
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO'
 import QuantityInput from '../components/QuantityInput'
 
 export default function CartPage() {
-  const { items, removeItem, updateQuantity } = useCartStore()
-  const total = items.reduce((s, i) => s + i.price * i.quantity, 0)
-  const count = items.reduce((s, i) => s + i.quantity, 0)
+  const { items, removeItem, updateQuantity, getTotal, getCount } = useCartStore()
+  const total = getTotal()
+  const count = getCount()
 
   return (
     <>
-      <Helmet><title>Cart – Loknath Solution</title></Helmet>
+      <SEO title="Your Cart" description="Review your cart at Loknath Solution." noIndex={true} />
       <div className="page-container py-10">
         <h1 className="text-3xl font-display font-bold text-slate-900 dark:text-white mb-8">
           Shopping Cart{' '}

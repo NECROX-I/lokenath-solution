@@ -152,3 +152,41 @@
   background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
   background-size: 200% 100%;
 }
+
+/* ── Mobile safe area for bottom nav ── */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ── Better touch targets on mobile ── */
+@media (max-width: 768px) {
+  button, a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Larger tap targets for small interactive elements */
+  .input-field {
+    font-size: 16px !important; /* prevents iOS zoom on input focus */
+    min-height: 48px;
+  }
+
+  select {
+    font-size: 16px !important;
+  }
+
+  /* Card hover effects only on non-touch */
+  .card {
+    transition: box-shadow 0.2s ease;
+  }
+}
+
+/* ── Smooth momentum scrolling on iOS ── */
+.overflow-y-auto, .overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Better active states for mobile ── */
+@media (hover: none) {
+  .hover\:scale-105:active { transform: scale(1.05); }
+  .hover\:-translate-y-0\.5:active { transform: translateY(-2px); }
+}

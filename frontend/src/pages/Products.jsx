@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO'
 import { motion, AnimatePresence } from 'framer-motion'
 import { productAPI } from '../services/api'
 import ProductCard from '../components/ProductCard'
@@ -63,10 +63,12 @@ export default function Products() {
 
   return (
     <>
-      <Helmet>
-        <title>Products – Lokennath Printing & Stationery</title>
-        <meta name="description" content="Browse our wide range of stationery and educational toys." />
-      </Helmet>
+      <SEO
+        title="Shop — Stationery & Toys"
+        description="Shop stationery and educational toys at Loknath Solution. Notebooks, pens, pencils, geometry boxes, LEGO, puzzles and more at the best prices in West Bengal."
+        keywords="buy notebooks West Bengal, stationery shop, pens pencils, educational toys, school supplies, LEGO, puzzles"
+        canonical="/products"
+      />
 
       {/* Header */}
       <div className="bg-gradient-to-r from-slate-800 to-slate-900 py-12">

@@ -3,7 +3,7 @@ import { MdStorefront, MdPhone, MdEmail, MdLocationOn } from 'react-icons/md'
 import { FaWhatsapp, FaFacebookF, FaInstagram } from 'react-icons/fa'
 
 export default function Footer() {
-  const wa = import.meta.env.VITE_WHATSAPP_NUMBER || '9883486739'
+  const wa = import.meta.env.VITE_WHATSAPP_NUMBER || '919876543210'
   return (
     <footer className="bg-slate-900 text-slate-300 pt-14 pb-6">
       <div className="page-container">
@@ -14,7 +14,7 @@ export default function Footer() {
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-ocean-500 flex items-center justify-center">
                 <MdStorefront className="text-white text-xl" />
               </div>
-              <span className="font-display font-bold text-white text-base">Lokennath Printing & Stationery</span>
+              <span className="font-display font-bold text-white text-base">Loknath Solution</span>
             </div>
             <p className="text-sm leading-relaxed text-slate-400 mb-5">
               Your trusted neighbourhood shop for stationery, educational toys, and essential digital services — all under one roof.
@@ -74,12 +74,12 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex gap-3 text-sm text-slate-400">
                 <MdLocationOn className="text-brand-500 flex-shrink-0 text-lg mt-0.5" />
-                <span>11B, Rahim Ostagar Rd, Jodhpur Gardens, Jodhpur Park<br />Kolkata – 700045, West Bengal</span>
+                <span>123 Main Market, Near Post Office,<br />Your City – 700001, West Bengal</span>
               </li>
               <li>
-                <a href={`tel:+91${wa.replace('91','9883486739')}`} className="flex gap-3 text-sm text-slate-400 hover:text-brand-400 transition-colors">
+                <a href={`tel:+91${wa.replace('91','')}`} className="flex gap-3 text-sm text-slate-400 hover:text-brand-400 transition-colors">
                   <MdPhone className="text-brand-500 flex-shrink-0 text-lg" />
-                  +91 74394 85463
+                  +91 {wa.replace('91', '')}
                 </a>
               </li>
               <li>
@@ -99,7 +99,7 @@ export default function Footer() {
 
         <div className="border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-slate-500">
-            © {new Date().getFullYear()} Lokennath Printing & Stationery. All rights reserved.
+            © {new Date().getFullYear()} Loknath Solution. All rights reserved.
           </p>
           <Link to="/admin/login" className="text-xs text-slate-600 hover:text-slate-400 transition-colors">
             Admin Login

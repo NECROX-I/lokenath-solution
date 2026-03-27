@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import SEO from '../../components/SEO'
 import { serviceRequestAPI } from '../../services/api'
 import toast from 'react-hot-toast'
 import { MdClose, MdMiscellaneousServices, MdPhone, MdDelete } from 'react-icons/md'
@@ -87,6 +88,8 @@ export default function AdminServiceRequests() {
   }
 
   return (
+    <>
+      <SEO title="Admin" description="." noIndex={true} />
     <div>
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
@@ -268,5 +271,6 @@ export default function AdminServiceRequests() {
         </div>
       )}
     </div>
+    </>
   )
 }

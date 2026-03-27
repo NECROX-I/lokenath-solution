@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO'
 import { motion } from 'framer-motion'
 import { serviceAPI } from '../services/api'
 import ServiceCard from '../components/ServiceCard'
@@ -11,7 +11,7 @@ import { FaWhatsapp } from 'react-icons/fa'
 export default function Services() {
   const [services, setServices] = useState([])
   const [loading, setLoading] = useState(true)
-  const wa = import.meta.env.VITE_WHATSAPP_NUMBER || '9883486739'
+  const wa = import.meta.env.VITE_WHATSAPP_NUMBER || '919876543210'
 
   useEffect(() => {
     serviceAPI.getAll()
@@ -21,10 +21,19 @@ export default function Services() {
 
   return (
     <>
-      <Helmet>
-        <title>Digital Services – Lokennath Printing & Stationery</title>
-        <meta name="description" content="Aadhaar, Voter ID, tax payment, money transfer, and government scheme applications — all at Lokennath Printing & Stationery." />
-      </Helmet>
+      <SEO
+        title="Digital Services — Aadhaar, Voter ID, Tax, Money Transfer"
+        description="Loknath Solution offers Aadhaar enrollment & corrections, Voter ID services, tax filing, online money transfer, ration card, government scheme applications and form filling in West Bengal."
+        keywords="Aadhaar center West Bengal, Voter ID services, tax filing help, online money transfer, ration card services, government schemes, form filling, PAN card"
+        canonical="/services"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "provider": { "@type": "LocalBusiness", "name": "Loknath Solution" },
+          "serviceType": "Government Documentation Services",
+          "areaServed": "West Bengal, India"
+        }}
+      />
 
       {/* Header */}
       <div className="bg-gradient-to-r from-ocean-900 to-slate-900 py-16">

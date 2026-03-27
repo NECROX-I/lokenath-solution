@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
+import SEO from '../../components/SEO'
 import { authAPI } from '../../services/api'
 import { useAuthStore } from '../../store'
 import toast from 'react-hot-toast'
@@ -42,9 +42,7 @@ export default function AdminLogin() {
 
   return (
     <>
-      <Helmet>
-        <title>Admin Login — Lokennath Printing & Stationery</title>
-      </Helmet>
+      <SEO title="Admin Login" description="Admin login." noIndex={true} />
 
       <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4">
 
@@ -58,7 +56,7 @@ export default function AdminLogin() {
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-500 to-ocean-600 shadow-brand mb-4">
               <MdStorefront className="text-white text-3xl" />
             </div>
-            <h1 className="text-2xl font-display font-bold text-white">Lokennath Printing & Stationery</h1>
+            <h1 className="text-2xl font-display font-bold text-white">Loknath Solution</h1>
             <p className="text-slate-400 text-sm mt-1">Admin Panel · Sign in to manage your store</p>
           </div>
 

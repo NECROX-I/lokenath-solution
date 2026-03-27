@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCartStore } from '../store'
 import { orderAPI } from '../services/api'
@@ -14,7 +14,7 @@ import { FaWhatsapp } from 'react-icons/fa'
 const WA = import.meta.env.VITE_WHATSAPP_NUMBER || '919876543210'
 
 export default function Checkout() {
-  const { items, clearCart } = useCartStore()
+  const { items, clearCart, getTotal, getCount } = useCartStore()
   const navigate = useNavigate()
 
   const [name, setName]       = useState('')
@@ -23,8 +23,8 @@ export default function Checkout() {
   const [notes, setNotes]     = useState('')
   const [submitting, setSubmitting] = useState(false)
 
-  const total = items.reduce((s, i) => s + i.price * i.quantity, 0)
-  const count = items.reduce((s, i) => s + i.quantity, 0)
+  const total = getTotal()
+  const count = getCount()
 
   const phoneValid = /^[6-9]\d{9}$/.test(phone)
   const canSubmit  = name.trim().length >= 2 && phoneValid
@@ -64,7 +64,7 @@ export default function Checkout() {
 
   return (
     <>
-      <Helmet><title>Checkout – Loknath Solution</title></Helmet>
+      <SEO title="Checkout" description="Complete your order at Loknath Solution." noIndex={true} />
 
       <div className="page-container py-8 max-w-4xl">
         <Link to="/cart" className="btn-ghost mb-6 inline-flex text-sm">

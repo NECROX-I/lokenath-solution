@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import SEO from '../../components/SEO'
 import { orderAPI } from '../../services/api'
 import toast from 'react-hot-toast'
 import { MdClose, MdShoppingBag, MdPhone, MdDelete } from 'react-icons/md'
@@ -88,6 +89,8 @@ export default function AdminOrders() {
   }
 
   return (
+    <>
+      <SEO title="Admin" description="." noIndex={true} />
     <div>
       {/* Header + Search */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
@@ -299,5 +302,6 @@ export default function AdminOrders() {
         </div>
       )}
     </div>
+    </>
   )
 }

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import SEO from '../../components/SEO'
 import { productAPI } from '../../services/api'
 import toast from 'react-hot-toast'
 import {
@@ -160,6 +161,8 @@ export default function AdminProducts() {
   }
 
   return (
+    <>
+      <SEO title="Admin" description="." noIndex={true} />
     <div>
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
@@ -468,5 +471,6 @@ export default function AdminProducts() {
         </div>
       )}
     </div>
+    </>
   )
 }

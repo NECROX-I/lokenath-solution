@@ -11,5 +11,19 @@ export default defineConfig({
         changeOrigin: true,
       }
     }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          ui:     ['framer-motion', 'react-hot-toast'],
+          charts: ['recharts'],
+        }
+      }
+    },
+    sourcemap: false,
+    // esbuild is built-in to Vite, no extra package needed
+    minify: 'esbuild',
   }
 })

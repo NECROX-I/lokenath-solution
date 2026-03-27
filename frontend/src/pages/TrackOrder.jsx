@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO'
 import { motion, AnimatePresence } from 'framer-motion'
 import { orderAPI, serviceRequestAPI } from '../services/api'
 import toast from 'react-hot-toast'
@@ -556,10 +556,11 @@ export default function TrackOrder() {
 
   return (
     <>
-      <Helmet>
-        <title>Track Order & Service — Loknath Solution</title>
-        <meta name="description" content="Track your order or service request status at Loknath Solution." />
-      </Helmet>
+      <SEO
+        title="Track Your Order"
+        description="Track your order or service request status at Loknath Solution using your phone number."
+        canonical="/track"
+      />
 
       {/* Header */}
       <div className="bg-gradient-to-r from-slate-800 to-slate-900 py-14">

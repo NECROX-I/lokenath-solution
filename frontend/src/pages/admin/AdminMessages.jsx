@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import SEO from '../../components/SEO'
 import { contactAPI } from '../../services/api'
 import toast from 'react-hot-toast'
 import { MdClose, MdMarkEmailRead, MdDelete, MdMessage, MdPhone, MdEmail } from 'react-icons/md'
@@ -59,6 +60,8 @@ export default function AdminMessages() {
   }
 
   return (
+    <>
+      <SEO title="Admin" description="." noIndex={true} />
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
@@ -216,5 +219,6 @@ export default function AdminMessages() {
         </div>
       )}
     </div>
+    </>
   )
 }

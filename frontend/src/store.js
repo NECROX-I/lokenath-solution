@@ -23,7 +23,8 @@ export const useCartStore = create(
         }
       },
 
-      removeItem: (id) => set({ items: get().items.filter(i => i._id !== id) }),
+      removeItem: (id) =>
+        set({ items: get().items.filter(i => i._id !== id) }),
 
       updateQuantity: (id, quantity) => {
         if (quantity < 1) {
@@ -34,6 +35,11 @@ export const useCartStore = create(
       },
 
       clearCart: () => set({ items: [] }),
+
+      // ── Computed helpers (call as functions, e.g. getTotal()) ──
+      getTotal:     () => get().items.reduce((s, i) => s + i.price * i.quantity, 0),
+      getCount:     () => get().items.reduce((s, i) => s + i.quantity, 0),
+      getItemCount: (id) => get().items.find(i => i._id === id)?.quantity || 0,
     }),
     { name: 'loknath-cart' }
   )
@@ -46,12 +52,11 @@ export const useThemeStore = create(
       dark: false,
       toggle: () => {
         const next = !get().dark
-        if (next) document.documentElement.classList.add('dark')
-        else document.documentElement.classList.remove('dark')
+        document.documentElement.classList.toggle('dark', next)
         set({ dark: next })
       },
       init: () => {
-        if (get().dark) document.documentElement.classList.add('dark')
+        document.documentElement.classList.toggle('dark', get().dark)
       },
     }),
     { name: 'loknath-theme' }
@@ -62,24 +67,27 @@ export const useThemeStore = create(
 export const useAuthStore = create(
   persist(
     (set) => ({
-      user: null,
-      token: null,
+      user:            null,
+      token:           null,
       isAuthenticated: false,
-      _hasHydrated: false,
+      _hasHydrated:    false,
 
       setHasHydrated: (val) => set({ _hasHydrated: val }),
 
       login: (user, token) => set({
-        user, token, isAuthenticated: true, _hasHydrated: true
+        user, token, isAuthenticated: true, _hasHydrated: true,
       }),
 
-      logout: () => set({ user: null, token: null, isAuthenticated: false }),
+      logout: () => set({
+        user: null, token: null, isAuthenticated: false,
+      }),
     }),
     {
       name: 'loknath-auth',
+      // Never persist _hasHydrated — it must always start false
       partialize: (state) => ({
-        user: state.user,
-        token: state.token,
+        user:            state.user,
+        token:           state.token,
         isAuthenticated: state.isAuthenticated,
       }),
       onRehydrateStorage: () => (state) => {

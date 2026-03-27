@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO'
 import { motion } from 'framer-motion'
 import { productAPI, serviceAPI } from '../services/api'
 import ProductCard from '../components/ProductCard'
@@ -22,7 +22,7 @@ export default function Home() {
   const [services, setServices] = useState([])
   const [loadingP, setLoadingP] = useState(true)
   const [loadingS, setLoadingS] = useState(true)
-  const wa = import.meta.env.VITE_WHATSAPP_NUMBER || '9883486739'
+  const wa = import.meta.env.VITE_WHATSAPP_NUMBER || '919876543210'
 
   useEffect(() => {
     productAPI.getAll({ featured: 'true', limit: 4 })
@@ -36,10 +36,19 @@ export default function Home() {
 
   return (
     <>
-      <Helmet>
-        <title>Lokennath Printing & Stationery – Stationery, Toys & Digital Services</title>
-        <meta name="description" content="Your trusted local shop for stationery, educational toys, and digital services like Aadhaar, tax filing, and money transfer." />
-      </Helmet>
+      <SEO
+        description="Loknath Solution — your trusted neighbourhood shop in West Bengal for notebooks, pens, school stationery, educational toys, Aadhaar services, Voter ID, tax filing, money transfer and government schemes."
+        keywords="Loknath Solution, stationery shop West Bengal, Aadhaar center, Voter ID services, tax filing help, online money transfer, educational toys, notebooks pens, government schemes"
+        canonical="/"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Store",
+          "name": "Loknath Solution",
+          "description": "Stationery, Toys & Digital Services",
+          "url": "https://loknathasolution.com",
+          "telephone": "+919876543210"
+        }}
+      />
 
       {/* ── Hero ───────────────────────────────────── */}
       <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden min-h-[90vh] flex items-center">
@@ -70,7 +79,7 @@ export default function Home() {
               </motion.h1>
 
               <motion.p variants={fadeUp} custom={2} className="text-slate-300 text-lg mt-5 leading-relaxed max-w-lg">
-                From school stationery and educational toys to Aadhaar services and tax filing — Lokennath Printing & Stationery is your one-stop shop for all essentials.
+                From school stationery and educational toys to Aadhaar services and tax filing — Loknath Solution is your one-stop shop for all essentials.
               </motion.p>
 
               <motion.div variants={fadeUp} custom={3} className="flex flex-wrap gap-3 mt-8">
@@ -240,7 +249,7 @@ export default function Home() {
               >
                 <FaWhatsapp className="text-xl" /> Chat on WhatsApp
               </a>
-              <a href={`tel:+91${wa.replace('91','9883486739')}`}
+              <a href={`tel:+91${wa.replace('91','')}`}
                 className="flex items-center gap-2 bg-white/20 hover:bg-white/30 text-white border border-white/30 font-semibold px-8 py-4 rounded-xl transition-all"
               >
                 <MdPhone className="text-xl" /> Call Us
@@ -291,7 +300,7 @@ export default function Home() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Lokennath Printing & Stationery Location"
+                title="Loknath Solution Location"
               />
             </div>
           </div>

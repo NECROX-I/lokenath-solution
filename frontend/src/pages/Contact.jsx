@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Helmet } from 'react-helmet-async'
+import SEO from '../components/SEO'
 import { motion } from 'framer-motion'
 import { contactAPI } from '../services/api'
 import toast from 'react-hot-toast'
@@ -10,7 +10,7 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' })
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
-  const wa = import.meta.env.VITE_WHATSAPP_NUMBER || '9883486739'
+  const wa = import.meta.env.VITE_WHATSAPP_NUMBER || '919876543210'
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -33,10 +33,12 @@ export default function Contact() {
 
   return (
     <>
-      <Helmet>
-        <title>Contact Us – Lokennath Printing & Stationery</title>
-        <meta name="description" content="Get in touch with Lokennath Printing & Stationery for any queries about products or services." />
-      </Helmet>
+      <SEO
+        title="Contact Us"
+        description="Contact Loknath Solution for stationery, toys or digital services. Visit our shop in West Bengal or WhatsApp us anytime. Open Mon–Sat 9AM–8PM."
+        keywords="contact Loknath Solution, shop address West Bengal, WhatsApp stationery shop"
+        canonical="/contact"
+      />
 
       <div className="bg-gradient-to-r from-slate-800 to-slate-900 py-12">
         <div className="page-container text-center">
@@ -53,8 +55,8 @@ export default function Contact() {
 
             <div className="space-y-5 mb-8">
               {[
-                { icon: MdLocationOn, title: 'Visit Us', content: '11b, Rahim Ostagar Rd, Jodhpur Gardens, Jodhpur Park,\nKolkata – 700045, West Bengal', color: 'text-brand-500' },
-                { icon: MdPhone, title: 'Call Us', content: '+91 74394 85463', link: 'tel:+919883486739', color: 'text-ocean-500' },
+                { icon: MdLocationOn, title: 'Visit Us', content: '123 Main Market, Near Post Office,\nYour City – 700001, West Bengal', color: 'text-brand-500' },
+                { icon: MdPhone, title: 'Call Us', content: `+91 ${wa.replace('91', '')}`, link: `tel:+91${wa.replace('91', '')}`, color: 'text-ocean-500' },
                 { icon: MdEmail, title: 'Email Us', content: 'info@loknathasolution.com', link: 'mailto:info@loknathasolution.com', color: 'text-purple-500' },
                 { icon: MdAccessTime, title: 'Shop Hours', content: 'Mon–Sat: 9 AM – 8 PM\nSunday: 10 AM – 5 PM', color: 'text-amber-500' },
               ].map(({ icon: Icon, title, content, link, color }) => (
@@ -74,7 +76,7 @@ export default function Contact() {
             </div>
 
             <a
-              href={`https://wa.me/${wa}?text=Hello Lokennath Printing & Stationery!`}
+              href={`https://wa.me/${wa}?text=Hello Loknath Solution!`}
               target="_blank" rel="noopener noreferrer"
               className="flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-4 rounded-xl transition-all w-fit"
             >
